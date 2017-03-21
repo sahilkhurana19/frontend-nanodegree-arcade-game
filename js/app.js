@@ -25,16 +25,22 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var player = function() {
-    console.log("Player defined")
+var Player = function(x, y, step) {
+    console.log("Player defined");
+    this.step = step;
+    this.sprite = 'images/char-boy.png';
+    this.x = x;
+    this.y = y;
 };
-player.update = function() {
+Player.prototype.update = function() {
+    this.x += 20;
+    this.y += 20;
     
 };
-player.render = function() {
-    
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-player.handleInput = function() {
+Player.prototype.handleInput = function() {
     
 };
 // Now instantiate your objects.
@@ -42,6 +48,7 @@ player.handleInput = function() {
 // Place the player object in a variable called player
 
 allEnemies = [];
+player = new Player(100, 100, 5);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

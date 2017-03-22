@@ -32,23 +32,39 @@ var Player = function(x, y, step) {
     this.x = x;
     this.y = y;
 };
-Player.prototype.update = function() {
-    this.x += 20;
-    this.y += 20;
+Player.prototype.update = function(x, y, dt) {
+    
+
     
 };
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-Player.prototype.handleInput = function() {
-    
+Player.prototype.handleInput = function(e) {
+    console.log(e);
+    console.log("In handle input");
+    switch (e) {
+        case "left":
+            this.x -= 100;
+            break;
+        case "up":
+            this.y -= 100;
+            break;
+        case "right":
+            this.x += 100; 
+            break;
+        case "down":
+            this.y += 100;
+            break;
+    }        
+ 
 };
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
 allEnemies = [];
-player = new Player(100, 100, 5);
+player = new Player(200, 300, 100);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
